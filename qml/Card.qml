@@ -349,7 +349,8 @@ Rectangle {
         anchors.fill: parent
         radius: 5
         border {
-            width: selectCB.cbpath != 'Back.png' ? 1 : 0
+            // width: selectCB.cbpath != 'Back.png' ? 1 : 0
+            width: 0
             color: 'black'
         }
         color: 'white'
@@ -365,10 +366,12 @@ Rectangle {
             id: backImage
 //            visible: false
             anchors.fill: parent
-            anchors.margins: selectCB.cbpath == 'Back.png' ? 0 : 2
-            source: selectCB.cbpath
+            // anchors.margins: selectCB.cbpath == 'Back.png' ? 0 : 2
+            // source: selectCB.cbpath
+            source: 'Back.png'
             //fillMode: Image.PreserveAspectCrop
-            fillMode: selectCB.cbpath == 'Back.png' ? Image.Stretch : Image.PreserveAspectCrop
+            // fillMode: selectCB.cbpath == 'Back.png' ? Image.Stretch : Image.PreserveAspectCrop
+            fillMode: Image.Stretch
             sourceSize.width: width
             sourceSize.height: height
         }

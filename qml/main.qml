@@ -1,7 +1,7 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.2
 import QtQuick.Particles 2.0
-import QtQuick.Dialogs 1.2
+// import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.2
 
@@ -597,50 +597,50 @@ Window {
                     checked: ""+settings.value("effects", "true") == "true"
                 }
 
-                SettingsLabel {
-			visible: false
-                    text: qsTr('Backdrop:')
-                }
-                Row {
-			visible: false // This doesn't work on Ubuntu Touch
-                    spacing: 5
-                    FancyButton {
-                        id: selectBGButton
-                        property string origURL
-                        text: qsTr('Select...')
-                        onClicked: {
-                            selectBG.open();
-                        }
-                    }
-                    FancyButton {
-                        text: qsTr('Clear')
-                        onClicked: {
-                            selectBGButton.origURL = 'background.jpg';
-                            selectBG.bgpath = 'background.jpg';
-                            bgImage.source = 'background.jpg';
-                        }
-                    }
-                }
+                // SettingsLabel {
+                //     visible: false
+                //     text: qsTr('Backdrop:')
+                // }
+                // Row {
+                //     visible: false // This doesn't work on Ubuntu Touch
+                //     spacing: 5
+                //     FancyButton {
+                //         id: selectBGButton
+                //         property string origURL
+                //         text: qsTr('Select...')
+                //         onClicked: {
+                //             selectBG.open();
+                //         }
+                //     }
+                //     FancyButton {
+                //         text: qsTr('Clear')
+                //         onClicked: {
+                //             selectBGButton.origURL = 'background.jpg';
+                //             selectBG.bgpath = 'background.jpg';
+                //             bgImage.source = 'background.jpg';
+                //         }
+                //     }
+                // }
 
-/*
-                SettingsLabel {
-                    text: 'Card Back:'
-                }
-                Row {
-                    spacing: 5
 
-                    FancyButton {
-                        text: 'Select...'
-                        onClicked: selectCB.open();
-                    }
-                    FancyButton {
-                        text: 'Clear'
-                        onClicked: {
-                            selectCB.cbpath = 'Back.png';
-                        }
-                    }
-                }
-*/
+                // SettingsLabel {
+                //     text: 'Card Back:'
+                // }
+                // Row {
+                //     spacing: 5
+                // 
+                //     FancyButton {
+                //         text: 'Select...'
+                //         onClicked: selectCB.open();
+                //     }
+                //     FancyButton {
+                //         text: 'Clear'
+                //         onClicked: {
+                //             selectCB.cbpath = 'Back.png';
+                //         }
+                //     }
+                // }
+
                 Row {
                     Layout.alignment: Qt.AlignHCenter
                     Layout.columnSpan: 2
@@ -662,16 +662,16 @@ Window {
             cbMuted.checked = ""+settings.value("muted", "false") == "true";
             cbEffects.checked = ""+settings.value("effects", "true") == "true";
             cbUnlimited.checked = ""+settings.value("unlimited", "true") == "true";
-            selectBG.bgpath = settings.value("background", "background.jpg");
-            selectCB.cbpath = settings.value("cardback", "Back.png");
-            selectBGButton.origURL = selectBG.bgpath;
+            // selectBG.bgpath = settings.value("background", "background.jpg");
+            // selectCB.cbpath = settings.value("cardback", "Back.png");
+            // selectBGButton.origURL = selectBG.bgpath;
             opacity = 1;
         }
 
         function close() {
             configMenu.opacity = 0;
-            selectBG.bgpath = selectBGButton.origURL;
-            bgImage.source = selectBGButton.origURL;
+            //selectBG.bgpath = selectBGButton.origURL;
+            //bgImage.source = selectBGButton.origURL;
         }
 
         function save() {
@@ -679,8 +679,8 @@ Window {
             settings.setValue("muted", cbMuted.checked);
             settings.setValue("effects", cbEffects.checked);
             settings.setValue("unlimited", cbUnlimited.checked);
-            settings.setValue("background", selectBG.bgpath);
-            settings.setValue("cardback", selectCB.cbpath);
+            // settings.setValue("background", selectBG.bgpath);
+            // settings.setValue("cardback", selectCB.cbpath);
 
             //topContainer.redeals = 3;
             redealText.visible = !cbUnlimited.checked;
@@ -704,44 +704,44 @@ Window {
     }
 */
 
-    FileDialog {
-        id: selectBG
-        property string bgpath: settings.value('background', 'background.jpg')
-        title: 'Background Image...'
-        selectExisting: true
-        selectFolder: false
-        selectMultiple: false
-        nameFilters: [ "Image files (*.jpg *.bmp *.png *.gif *.jpeg)" ]
-        onAccepted: {
-            console.log("You chose: " + JSON.stringify(selectBG.fileUrls, null, 2));
-            bgpath = selectBG.fileUrls[ selectBG.fileUrls.length - 1];
-            bgImage.source = bgpath;
-            selectBG.close();
-        }
-        onRejected: {
-            console.log("Canceled");
-            selectBG.close();
-        }
-    }
-
-    FileDialog {
-        id: selectCB
-        property string cbpath: settings.value('cardback', 'Back.png')
-        title: 'Card Image...'
-        selectExisting: true
-        selectFolder: false
-        selectMultiple: false
-        nameFilters: [ "Image files (*.jpg *.bmp *.png *.gif *.jpeg)" ]
-        onAccepted: {
-            console.log("You chose: " + JSON.stringify(selectCB.fileUrls, null, 2));
-            cbpath = selectCB.fileUrls[ selectCB.fileUrls.length - 1];
-            selectCB.close();
-        }
-        onRejected: {
-            console.log("Canceled");
-            selectCB.close();
-        }
-    }
+    // FileDialog {
+    //     id: selectBG
+    //     property string bgpath: settings.value('background', 'background.jpg')
+    //     title: 'Background Image...'
+    //     selectExisting: true
+    //     selectFolder: false
+    //     selectMultiple: false
+    //     nameFilters: [ "Image files (*.jpg *.bmp *.png *.gif *.jpeg)" ]
+    //     onAccepted: {
+    //         console.log("You chose: " + JSON.stringify(selectBG.fileUrls, null, 2));
+    //         bgpath = selectBG.fileUrls[ selectBG.fileUrls.length - 1];
+    //         bgImage.source = bgpath;
+    //         selectBG.close();
+    //     }
+    //     onRejected: {
+    //         console.log("Canceled");
+    //         selectBG.close();
+    //     }
+    // }
+    // 
+    // FileDialog {
+    //     id: selectCB
+    //     property string cbpath: settings.value('cardback', 'Back.png')
+    //     title: 'Card Image...'
+    //     selectExisting: true
+    //     selectFolder: false
+    //     selectMultiple: false
+    //     nameFilters: [ "Image files (*.jpg *.bmp *.png *.gif *.jpeg)" ]
+    //     onAccepted: {
+    //         console.log("You chose: " + JSON.stringify(selectCB.fileUrls, null, 2));
+    //         cbpath = selectCB.fileUrls[ selectCB.fileUrls.length - 1];
+    //         selectCB.close();
+    //     }
+    //     onRejected: {
+    //         console.log("Canceled");
+    //         selectCB.close();
+    //     }
+    // }
 
     Rectangle {
         id: aboutScreen

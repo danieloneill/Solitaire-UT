@@ -1,7 +1,7 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.2
 import QtQuick.Particles 2.0
-import QtQuick.Dialogs 1.2
+//import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.2
 
@@ -601,6 +601,7 @@ Window {
 			visible: false
                     text: qsTr('Backdrop:')
                 }
+/*
                 Row {
 			visible: false // This doesn't work on Ubuntu Touch
                     spacing: 5
@@ -621,6 +622,7 @@ Window {
                         }
                     }
                 }
+*/
 
 /*
                 SettingsLabel {
@@ -662,16 +664,16 @@ Window {
             cbMuted.checked = ""+settings.value("muted", "false") == "true";
             cbEffects.checked = ""+settings.value("effects", "true") == "true";
             cbUnlimited.checked = ""+settings.value("unlimited", "true") == "true";
-            selectBG.bgpath = settings.value("background", "background.jpg");
-            selectCB.cbpath = settings.value("cardback", "Back.png");
-            selectBGButton.origURL = selectBG.bgpath;
+            //selectBG.bgpath = settings.value("background", "background.jpg");
+            //selectCB.cbpath = settings.value("cardback", "Back.png");
+            //selectBGButton.origURL = selectBG.bgpath;
             opacity = 1;
         }
 
         function close() {
             configMenu.opacity = 0;
-            selectBG.bgpath = selectBGButton.origURL;
-            bgImage.source = selectBGButton.origURL;
+            //selectBG.bgpath = selectBGButton.origURL;
+            //bgImage.source = selectBGButton.origURL;
         }
 
         function save() {
@@ -679,8 +681,8 @@ Window {
             settings.setValue("muted", cbMuted.checked);
             settings.setValue("effects", cbEffects.checked);
             settings.setValue("unlimited", cbUnlimited.checked);
-            settings.setValue("background", selectBG.bgpath);
-            settings.setValue("cardback", selectCB.cbpath);
+            //settings.setValue("background", selectBG.bgpath);
+            //settings.setValue("cardback", selectCB.cbpath);
 
             //topContainer.redeals = 3;
             redealText.visible = !cbUnlimited.checked;
@@ -704,6 +706,7 @@ Window {
     }
 */
 
+/*
     FileDialog {
         id: selectBG
         property string bgpath: settings.value('background', 'background.jpg')
@@ -742,6 +745,7 @@ Window {
             selectCB.close();
         }
     }
+*/
 
     Rectangle {
         id: aboutScreen

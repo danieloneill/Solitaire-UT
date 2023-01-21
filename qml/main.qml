@@ -10,6 +10,7 @@ import QtMultimedia 5.8
 import Qt.labs.settings 1.0
 
 import "logic.js" as Logic
+import "about.js" as About
 
 Window {
     id: topWindow
@@ -791,20 +792,23 @@ Window {
                 readOnly: true
                 textFormat: TextEdit.RichText
                 wrapMode: Text.Wrap
-                text: "Loading..."
+                //text: "Loading..."
+                text: About.about()
 
                 onLinkActivated: {
                     Qt.openUrlExternally(link);
                 }
 
+/*
                 Component.onCompleted: {
                     aboutScreen.getContents('about.html', function(cont) {
                         aboutContents.text = cont;
                     });
                 }
+*/
             }
         }
-
+/*
         function getContents(url, cb)
         {
             var doc = new XMLHttpRequest();
@@ -818,7 +822,7 @@ Window {
             doc.open("GET", url);
             doc.send();
         }
-
+*/
         Image {
             anchors {
                 top: parent.top

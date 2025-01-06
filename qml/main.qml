@@ -1,13 +1,11 @@
-import QtQuick 2.7
-import QtQuick.Controls 2.2
-import QtQuick.Particles 2.0
-//import QtQuick.Dialogs 1.2
-import QtQuick.Layouts 1.3
-import QtQuick.Window 2.2
+import QtCore
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Particles
+import QtQuick.Layouts
+import QtQuick.Window
 
-import QtMultimedia 5.8
-
-import Qt.labs.settings 1.0
+import QtMultimedia
 
 import "logic.js" as Logic
 import "about.js" as About
@@ -159,11 +157,7 @@ Window {
         function playClip(name)
         {
             if( ""+settings.value('muted', 'false') == "true" )
-	    {
-		console.log('I am muted!');
                 return;
-	    }
-		console.log('I am at: '+volume);
 
             if( 'victory' == name )
                 return victory.play();

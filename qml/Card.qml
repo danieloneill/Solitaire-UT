@@ -1,4 +1,4 @@
-import QtQuick 2.7
+import QtQuick
 
 Rectangle {
     id: cardContainer
@@ -36,7 +36,7 @@ Rectangle {
         if( !childCards || childCards.length == 0 )
             return;
         
-        for( var n=0; n < childCards.length; n++ )
+        for( let n=0; n < childCards.length; n++ )
             childCards[n].resetPosition();
 
         childCards = [];
@@ -400,7 +400,7 @@ Rectangle {
             oldY = mouseY;
         }
 
-        onMouseXChanged: {
+        onMouseXChanged: function() {
             if( !isDragging && !moveAnimator.running && ( mouseX > oldX + 10 || mouseX < oldX - 10 ) )
             {
                 isDragging = true;
@@ -408,18 +408,17 @@ Rectangle {
             }
             else if( isDragging )
             {
-                var mp = topContainer.mapFromItem(mouseBox, mouseX-oldX, mouseY-oldY);
+                let mp = topContainer.mapFromItem(mouseBox, mouseX-oldX, mouseY-oldY);
                 cardContainer.x = mp.x;
                 if( cardContainer.childCards && cardContainer.childCards.length > 0 )
                 {
-                    for( var j=0; j < cardContainer.childCards.length; j++ )
+                    for( let j=0; j < cardContainer.childCards.length; j++ )
                         cardContainer.childCards[j].x = cardContainer.x;
                 }
             }
-            mouse.accepted = true;
         }
 
-        onMouseYChanged: {
+        onMouseYChanged: function() {
             if( !isDragging && !moveAnimator.running && ( mouseY > oldY + 10 || mouseY < oldY - 10 ) )
             {
                 isDragging = true;
@@ -427,22 +426,21 @@ Rectangle {
             }
             else if( isDragging )
             {
-                var mp = topContainer.mapFromItem(mouseBox, mouseX-oldX, mouseY-oldY);
+                let mp = topContainer.mapFromItem(mouseBox, mouseX-oldX, mouseY-oldY);
                 cardContainer.y = mp.y;
                 if( cardContainer.childCards && cardContainer.childCards.length > 0 )
                 {
-                    for( var j=0; j < cardContainer.childCards.length; j++ )
+                    for( let j=0; j < cardContainer.childCards.length; j++ )
                         cardContainer.childCards[j].y = cardContainer.y + topContainer.cardSpacing + (topContainer.cardSpacing*j);
                 }
             }
-            mouse.accepted = true;
         }
 
-        onReleased: {
+        onReleased: function(mouse) {
             if( isDragging )
             {
                 //console.log('Was dragging.');
-                var dp = topContainer.mapFromItem(mouseBox, mouseX, mouseY);
+                let dp = topContainer.mapFromItem(mouseBox, mouseX, mouseY);
                 cardContainer.dropped(cardContainer, dp.x, dp.y);
                 mouse.accepted = true;
             }

@@ -1,2 +1,2 @@
 # Solitaire-UT
-Klondike Solitaire for Ubuntu Touch
+Klondike Solitaire for Mobile devices
